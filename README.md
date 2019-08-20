@@ -21,7 +21,14 @@ public class ZuulFiltersModuleIntegTest {
   @Test
   public void scanningWorks() {
     String[] filterLocations = filterFileManagerConfig.getDirectories();
+    String[] classNames = filterFileMangerConfig.getClassNames();
     
+    assertEquals(3, filterLocations.length);
+    assertEquals("outbound", filterLocations[1]);
+    
+    assertEquals(2, classNames.length);
+    assertEquals("com.netflix.zuul.init.TestZuulFilter", classNames[0]);
+    assertEquals("com.netflix.zuul.init2.TestZuulFilter2", classNames[1]);
   }
 }
 
